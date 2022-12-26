@@ -22,8 +22,9 @@ def get_answers(name):
         if answer == is_even(num):
             print('Correct!')
         else:
-            print(f"'{answer}' is wrong answer ;(. Correct answer was '{is_even(num)}'")
-            print(f"Let's try again, {name}!")    
+            print(f"'{answer}' is wrong answer ;(."
+                  f"Correct answer was '{is_even(num)}'")
+            print(f"Let's try again, {name}!")
             break
         if tries >= 2:
             print(f"Congratulations, {name}!")
