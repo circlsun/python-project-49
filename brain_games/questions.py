@@ -1,5 +1,5 @@
 import prompt
-from random import randint
+from random import randint, choice
 
 
 def welcome_user():
@@ -14,16 +14,27 @@ def is_even(x):
         return 'no'
 
 
-def get_answers(name):
-    for tries in range(3):
-        num = randint(1, 20)
-        print(f"Question: {num}")
-        answer = prompt.string('Your answer: ').lower()
-        if answer == is_even(num):
+def get_random_num():
+    return randint(1, 20)
+
+
+def get_random_expression():
+    return f"{get_random_num()} {choice(['+', '-', '*'])} {get_random_num()}"
+
+
+def get_answer(name, game, question):
+    answer = prompt.string('Your answer: ').lower()
+    return answer == game, answer   
+
+
+def start_game(name, game, question, tries):
+    for user_try in range(tries):
+        print(f"Question: {question}")
+        user_answer = get_answer(name, game, question)
+        if user_answer[0] == True:
             print('Correct!')
         else:
-            print(f"'{answer}' is wrong answer ;(. Correct answer was '{is_even(num)}'")
-            print(f"Let's try again, {name}!")    
-            break
-        if tries >= 2:
+            print(f"'{user_answer[1]}' is wrong answer ;(. Correct answer was '{game}'")
+            print(f"Let's try again, {name}!")
+        if user_try >= tries - 1:
             print(f"Congratulations, {name}!")
