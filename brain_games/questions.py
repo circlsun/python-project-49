@@ -15,7 +15,7 @@ def is_even(x):
 
 
 def get_random_num():
-    return randint(1, 20)
+    return randint(1, 25)
 
 
 def get_random_expression():
